@@ -34,6 +34,3 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           Solution_Name: EmployeeAttendancePortalApi.sln          # Your actual .sln file name
-          Test_Project_Path: path/to/your/test/project.csproj     # Path to your test project
-          Wap_Project_Directory: path/to/wap/project              # WAP project directory (if applicable)
-          Wap_Project_Path: path/to/wap/project.wapproj           # WAP project file path (if applicable)
