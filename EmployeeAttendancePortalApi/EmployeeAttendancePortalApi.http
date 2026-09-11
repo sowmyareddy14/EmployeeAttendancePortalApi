@@ -1,0 +1,6 @@
+@EmployeeAttendancePortalApi_HostAddress = http://localhost:5172
+
+GET {{EmployeeAttendancePortalApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
