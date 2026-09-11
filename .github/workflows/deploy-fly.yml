@@ -16,11 +16,10 @@ jobs:
         with:
           dotnet-version: '7.0.x'
 
-      - name: Restore
-        run: dotnet restore EmployeeAttendancePortalApi/EmployeeAttendancePortalApi.csproj
-
-      - name: Publish
-        run: dotnet publish EmployeeAttendancePortalApi/EmployeeAttendancePortalApi.csproj -c Release -o publish
+      - name: Restore and Publish
+        run: |
+          dotnet restore EmployeeAttendancePortalApi/EmployeeAttendancePortalApi.csproj
+          dotnet publish EmployeeAttendancePortalApi/EmployeeAttendancePortalApi.csproj -c Release -o publish
 
       - name: Install flyctl
         uses: superfly/flyctl-actions@v1
