@@ -6,6 +6,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 
+// Allow CORS from any origin (development/testing). Remove or restrict in production.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllDev", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 // Configure EF Core with SQL Server (uses DefaultConnection from appsettings.json)
 builder.Services.AddDbContext<AttendanceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -39,6 +50,9 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 // Map OpenAPI UI so the built-in OpenAPI page is available.
 app.MapOpenApi();
+
+// Enable CORS. Use the policy configured above.
+app.UseCors("AllowAllDev");
 
 // Enable classic Swagger middleware and UI (Swashbuckle) at /swagger
 app.UseSwagger();
